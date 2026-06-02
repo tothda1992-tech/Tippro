@@ -395,9 +395,27 @@ async function fetchOddsOrProbs(country, league, home, away){
   #hybApp .body{background:#0b1220 !important;opacity:1 !important}
   #hybApp .stack{display:grid;gap:10px}
   #hybApp .mono{font-family:ui-monospace,Consolas,Menlo,monospace}
+
+/* CONTRAST FIX v3 - phone readable */
+#hybApp, #hybApp *{color:#f4f8ff !important;text-shadow:none !important;opacity:1 !important;filter:none !important;}
+#hybApp{background:#07111f !important;}
+#hybApp .body{background:#07111f !important;}
+#hybApp .card{background:#14243b !important;border:1px solid #3c5f91 !important;box-shadow:none !important;}
+#hybApp .mono, #hybApp .card, #hybApp .card div, #hybApp b{color:#f7fbff !important;}
+#hybApp table{background:#14243b !important;}
+#hybApp th{background:#213a5e !important;color:#ffffff !important;}
+#hybApp td{background:#14243b !important;color:#ffffff !important;}
+#hybApp select,#hybApp input,#hybApp button{background:#162a45 !important;color:#ffffff !important;border:1px solid #5d82b8 !important;}
+#hybApp button{font-weight:700 !important;}
+#hybApp .tabs button.active,#hybApp .tabs .active{background:#48a8ff !important;color:#001426 !important;}
+#hybApp td[style*="2ecc71"]{color:#4dff9a !important;}
+#hybApp td[style*="ffcc66"]{color:#ffd96a !important;}
+#hybApp td[style*="ff6b6b"]{color:#ff8d8d !important;}
+@media(max-width:720px){#hybApp .body{padding:8px !important;} #hybApp .card{margin:8px 0 !important;} }
+
   </style>
   <div class="bar">
-    <b>⚽ TippPro Hybrid+ integrált • fix56</b>
+    <b>⚽ TippPro Hybrid+ integrált • fix56 • v3 látható</b>
     <span class="build">beépítve: v11 fix23 alap • ${new Date().toLocaleString()}</span>
   </div>
   <div class="tabs">
