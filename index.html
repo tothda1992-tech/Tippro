@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TippPro – GitHub verzió</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>TippPro</h1>
+      <p>Foci elemző • Poisson • fair odds • kombi • backtest</p>
+    </div>
+    <button id="btnReset" class="ghost">Frissítés / cache törlés</button>
+  </header>
+
+  <nav class="tabs">
+    <button data-tab="analysis" class="active">Elemzés</button>
+    <button data-tab="sim">Scoreline</button>
+    <button data-tab="combo">Kombi</button>
+    <button data-tab="backtest">Backtest</button>
+    <button data-tab="journal">Napló</button>
+    <button data-tab="help">Súgó</button>
+  </nav>
+
+  <main>
+    <section id="tab-analysis" class="tab active">
+      <div class="grid two">
+        <div class="card">
+          <h2>Meccs kiválasztása</h2>
+          <label>Ország<select id="country"></select></label>
+          <label>Liga<select id="league"></select></label>
+          <label>Hazai<select id="home"></select></label>
+          <label>Vendég<select id="away"></select></label>
+          <div class="row">
+            <label>Korreláció ρ <span id="rhoVal">0.00</span><input id="rho" type="range" min="0" max="0.35" step="0.01" value="0"></label>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Modell eredmény</h2>
+          <div class="kpi"><span>μ hazai</span><b id="muH">–</b></div>
+          <div class="kpi"><span>μ vendég</span><b id="muA">–</b></div>
+          <div class="kpi"><span>1 / X / 2</span><b id="p1x2">–</b></div>
+          <div class="kpi"><span>Over 2.5 / BTTS</span><b id="pGoals">–</b></div>
+          <p id="debug" class="muted"></p>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h2>Fair odds</h2>
+          <table><thead><tr><th>Piac</th><th>Fair odds</th></tr></thead><tbody id="fairRows"></tbody></table>
+        </div>
+        <div class="card">
+          <h2>Value kalkulátor</h2>
+          <label>Piac<select id="marketPick"></select></label>
+          <label>Bukméker odds<input id="bookOdds" type="number" min="1.01" step="0.01" value="1.85"></label>
+          <button id="calcValue">EV / Kelly számítás</button>
+          <div id="valueBox" class="result"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-sim" class="tab">
+      <div class="card">
+        <h2>Legvalószínűbb eredmények</h2>
+        <button id="runSim">Scoreline lista</button>
+        <div id="simSummary" class="result"></div>
+        <div id="simGrid" class="scoregrid"></div>
+      </div>
+    </section>
+
+    <section id="tab-combo" class="tab">
+      <div class="card">
+        <h2>Kombi generátor</h2>
+        <div class="grid three">
+          <label>Cél odds<input id="targetOdds" type="number" step="0.1" value="2.5"></label>
+          <label>Lábszám<input id="legs" type="number" min="2" max="5" value="2"></label>
+          <label>Min EV<input id="minEV" type="number" step="0.01" value="0.02"></label>
+        </div>
+        <button id="genCombo">Kombi keresése</button>
+        <div id="comboBox"></div>
+      </div>
+    </section>
+
+    <section id="tab-backtest" class="tab">
+      <div class="card">
+        <h2>CSV backtest</h2>
+        <p class="muted">Formátum: date,market,odds,model_p,outcome — ahol model_p 0–1 közötti, outcome 1 vagy 0.</p>
+        <textarea id="btCsv" rows="8">date,market,odds,model_p,outcome
+2026-05-01,Over 2.5,1.85,0.62,1
+2026-05-02,BTTS Yes,1.72,0.59,0
+2026-05-03,1X,1.35,0.82,1</textarea>
+        <button id="runBt">Backtest futtatás</button>
+        <div id="btSummary" class="result"></div>
+        <div id="btTable"></div>
+      </div>
+    </section>
+
+    <section id="tab-journal" class="tab">
+      <div class="card">
+        <h2>Napló</h2>
+        <button id="exportJournal">CSV export</button>
+        <table id="journal"><thead><tr><th>Dátum</th><th>Piac</th><th>Odds</th><th>P%</th><th>EV%</th><th>Stake%</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+
+    <section id="tab-help" class="tab">
+      <div class="card">
+        <h2>Használat</h2>
+        <p>Ez a verzió teljesen statikus: GitHub Pages-en és Netlify-on is működik. API-kulcs nélkül is indul, mert beépített demó adatbázist használ.</p>
+        <p>A számítás modell-alapú becslés, nem garantált tipp. Éles fogadáshoz előbb backtest és ROI ellenőrzés kell.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
