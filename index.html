@@ -59,7 +59,7 @@ td.mono{font-variant-numeric:tabular-nums}
 </head><body>
 <div class="wrap">
   <div class="header">
-    <div class="brand"><img src="data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2064%2064%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2230%22%20fill%3D%22%23e8eefc%22/%3E%3Cpath%20d%3D%22M32%2010%2022%2016l2%2012%208%206%208-6%202-12-10-6Zm-20%2012%206%202%204%208-4%208-6%202-4-10%204-10Zm40%200%204%2010-4%2010-6-2-4-8%204-8%206-2ZM22%2042l10%2012%2010-12-10-6-10%206Z%22%20fill%3D%22%230f1520%22/%3E%3C/svg%3E" width="26" height="26" alt=""/><h2 style="margin:0">TippPro FIX23 – telefonos full adat verzió</h2></div>
+    <div class="brand"><img src="data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2064%2064%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2230%22%20fill%3D%22%23e8eefc%22/%3E%3Cpath%20d%3D%22M32%2010%2022%2016l2%2012%208%206%208-6%202-12-10-6Zm-20%2012%206%202%204%208-4%208-6%202-4-10%204-10Zm40%200%204%2010-4%2010-6-2-4-8%204-8%206-2ZM22%2042l10%2012%2010-12-10-6-10%206Z%22%20fill%3D%22%230f1520%22/%3E%3C/svg%3E" width="26" height="26" alt=""/><h2 style="margin:0">TippPro FIX23 – v4 kontraszt</h2></div>
     <span class="badge">Offline / API nélkül</span><span id="msg" class="badge">Kész</span>
   </div>
   <div class="panel"><b>Egyszerűsített FIX23:</b> minden adat és működés az index.html fájlban van, ezért telefonról is könnyen feltölthető.</div>
@@ -411,11 +411,16 @@ async function fetchOddsOrProbs(country, league, home, away){
 #hybApp td[style*="2ecc71"]{color:#4dff9a !important;}
 #hybApp td[style*="ffcc66"]{color:#ffd96a !important;}
 #hybApp td[style*="ff6b6b"]{color:#ff8d8d !important;}
+
+/* CONTRAST FIX v4 - force suggestion cards readable */
+#hybApp #slOut .card, #hybApp #slOut .card *{color:#ffffff !important;opacity:1 !important;filter:none !important;text-shadow:none !important;}
+#hybApp #slOut .card{background:#18365a !important;border:2px solid #5db6ff !important;}
+#hybApp #slOut .mono{color:#dff0ff !important;}
 @media(max-width:720px){#hybApp .body{padding:8px !important;} #hybApp .card{margin:8px 0 !important;} }
 
   </style>
   <div class="bar">
-    <b>⚽ TippPro Hybrid+ integrált • fix56 • v3 látható</b>
+    <b>⚽ TippPro Hybrid+ integrált • fix56 • v4 erős kontraszt</b>
     <span class="build">beépítve: v11 fix23 alap • ${new Date().toLocaleString()}</span>
   </div>
   <div class="tabs">
@@ -630,10 +635,10 @@ async function fetchOddsOrProbs(country, league, home, away){
     SHORTLIST = suggestions.slice(0, topN);
     const box = $('#slOut');
     if(!SHORTLIST.length){ box.innerHTML='<div class="mono" style="opacity:.7">Nincs jelzés a küszöb felett.</div>'; return; }
-    box.innerHTML = SHORTLIST.map(s=>`<div class="card">
-      <div><b>${s.country} • ${s.league}</b> — ${s.home} vs ${s.away} • Tipp: <b>${s.pick}</b></div>
-      <div class="mono">p=${pct(s.p)} • fair≈${s.fair.toFixed(2)} • EV≈${(s.ev*100).toFixed(1)}%</div>
-      <div style="margin-top:6px"><button class="addBtn">Hozzáadás</button></div>
+    box.innerHTML = SHORTLIST.map(s=>`<div class="card" style="background:#18365a !important;border:2px solid #5db6ff !important;color:#ffffff !important;opacity:1 !important;filter:none !important;">
+      <div style="color:#ffffff !important;font-weight:800 !important;font-size:16px !important;line-height:1.45 !important;"><b style="color:#ffffff !important;">${s.country} • ${s.league}</b> — ${s.home} vs ${s.away} • Tipp: <b style="color:#ffffff !important;">${s.pick}</b></div>
+      <div class="mono" style="color:#dff0ff !important;font-weight:800 !important;font-size:15px !important;margin-top:6px !important;">p=${pct(s.p)} • fair≈${s.fair.toFixed(2)} • EV≈${(s.ev*100).toFixed(1)}%</div>
+      <div style="margin-top:10px"><button class="addBtn" style="background:#4aa3ff !important;color:#001426 !important;font-weight:900 !important;border:0 !important;">Hozzáadás</button></div>
     </div>`).join('');
     $('#slOut').querySelectorAll('.addBtn').forEach((btn,idx)=>btn.addEventListener('click',()=>{
       const s=SHORTLIST[idx]; MATCHES.push({country:s.country,league:s.league,home:s.home,away:s.away,P:s.P}); renderList();
