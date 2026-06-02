@@ -1,0 +1,20 @@
+[
+  {
+    "version": "v11_all-in-one FULL+",
+    "date": "2025-09-07",
+    "entries": [
+      {
+        "type": "feature",
+        "text": "Kombin\u00e1tor / Napl\u00f3 / Sportok / Changelog panelek v\u00e9gleges\u00edtve"
+      },
+      {
+        "type": "fix",
+        "text": "Egys\u00e9ges tab router (hash + .active)"
+      },
+      {
+        "type": "note",
+        "text": "no-SW build a stabil teszt kedv\u00e9\u00e9rt"
+      }
+    ]
+  }
+]

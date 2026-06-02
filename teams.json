@@ -1,0 +1,76 @@
+{
+  "39_2025": [
+    {
+      "id": 33,
+      "name": "Manchester United"
+    },
+    {
+      "id": 42,
+      "name": "Arsenal"
+    },
+    {
+      "id": 50,
+      "name": "Manchester City"
+    }
+  ],
+  "61_2025": [
+    {
+      "id": 85,
+      "name": "PSG"
+    },
+    {
+      "id": 81,
+      "name": "Lyon"
+    }
+  ],
+  "197_2025": [
+    {
+      "id": 842,
+      "name": "Olympiacos"
+    },
+    {
+      "id": 844,
+      "name": "PAOK"
+    }
+  ],
+  "140_2025": [
+    {
+      "id": 541,
+      "name": "Real Madrid"
+    },
+    {
+      "id": 529,
+      "name": "Barcelona"
+    }
+  ],
+  "135_2025": [
+    {
+      "id": 489,
+      "name": "Inter"
+    },
+    {
+      "id": 496,
+      "name": "Juventus"
+    }
+  ],
+  "78_2025": [
+    {
+      "id": 157,
+      "name": "Bayern Munich"
+    },
+    {
+      "id": 165,
+      "name": "Borussia Dortmund"
+    }
+  ],
+  "94_2025": [
+    {
+      "id": 211,
+      "name": "Benfica"
+    },
+    {
+      "id": 212,
+      "name": "Porto"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "base_mu": 1.35
+  },
+  "countries": {
+    "England": {
+      "leagues": {
+        "Premier League": {
+          "teams": [
+            "Arsenal",
+            "Man City"
+          ],
+          "ratings": {
+            "Arsenal": 1690,
+            "Man City": 1800
+          }
+        }
+      }
+    }
+  }
+}

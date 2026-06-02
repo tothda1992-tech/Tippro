@@ -1,0 +1,62 @@
+{
+  "England": [
+    {
+      "id": 39,
+      "name": "Premier League"
+    }
+  ],
+  "France": [
+    {
+      "id": 61,
+      "name": "Ligue 1"
+    }
+  ],
+  "Greece": [
+    {
+      "id": 197,
+      "name": "Super League 1"
+    }
+  ],
+  "Spain": [
+    {
+      "id": 140,
+      "name": "La Liga"
+    }
+  ],
+  "Italy": [
+    {
+      "id": 135,
+      "name": "Serie A"
+    }
+  ],
+  "Germany": [
+    {
+      "id": 78,
+      "name": "Bundesliga"
+    }
+  ],
+  "Portugal": [
+    {
+      "id": 94,
+      "name": "Primeira Liga"
+    }
+  ],
+  "Netherlands": [
+    {
+      "id": 88,
+      "name": "Eredivisie"
+    }
+  ],
+  "Belgium": [
+    {
+      "id": 144,
+      "name": "Jupiler Pro League"
+    }
+  ],
+  "Scotland": [
+    {
+      "id": 179,
+      "name": "Premiership"
+    }
+  ]
+}
