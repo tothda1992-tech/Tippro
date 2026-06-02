@@ -59,7 +59,7 @@ td.mono{font-variant-numeric:tabular-nums}
 </head><body>
 <div class="wrap">
   <div class="header">
-    <div class="brand"><img src="data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2064%2064%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2230%22%20fill%3D%22%23e8eefc%22/%3E%3Cpath%20d%3D%22M32%2010%2022%2016l2%2012%208%206%208-6%202-12-10-6Zm-20%2012%206%202%204%208-4%208-6%202-4-10%204-10Zm40%200%204%2010-4%2010-6-2-4-8%204-8%206-2ZM22%2042l10%2012%2010-12-10-6-10%206Z%22%20fill%3D%22%230f1520%22/%3E%3C/svg%3E" width="26" height="26" alt=""/><h2 style="margin:0">TippPro FIX23 – GitHub telefonos verzió</h2></div>
+    <div class="brand"><img src="data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2064%2064%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2230%22%20fill%3D%22%23e8eefc%22/%3E%3Cpath%20d%3D%22M32%2010%2022%2016l2%2012%208%206%208-6%202-12-10-6Zm-20%2012%206%202%204%208-4%208-6%202-4-10%204-10Zm40%200%204%2010-4%2010-6-2-4-8%204-8%206-2ZM22%2042l10%2012%2010-12-10-6-10%206Z%22%20fill%3D%22%230f1520%22/%3E%3C/svg%3E" width="26" height="26" alt=""/><h2 style="margin:0">TippPro FIX23 – telefonos full adat verzió</h2></div>
     <span class="badge">Offline / API nélkül</span><span id="msg" class="badge">Kész</span>
   </div>
   <div class="panel"><b>Egyszerűsített FIX23:</b> minden adat és működés az index.html fájlban van, ezért telefonról is könnyen feltölthető.</div>
@@ -75,11 +75,277 @@ const EMBEDDED_DB = {
         "Premier League": {
           "teams": [
             "Arsenal",
-            "Man City"
+            "Man City",
+            "Liverpool",
+            "Chelsea",
+            "Tottenham",
+            "Man United",
+            "Newcastle",
+            "Aston Villa",
+            "Brighton",
+            "West Ham"
           ],
           "ratings": {
-            "Arsenal": 1690,
-            "Man City": 1800
+            "Man City": 1820,
+            "Liverpool": 1785,
+            "Arsenal": 1770,
+            "Chelsea": 1680,
+            "Tottenham": 1660,
+            "Man United": 1650,
+            "Newcastle": 1640,
+            "Aston Villa": 1635,
+            "Brighton": 1580,
+            "West Ham": 1540
+          }
+        }
+      }
+    },
+    "Spain": {
+      "leagues": {
+        "La Liga": {
+          "teams": [
+            "Real Madrid",
+            "Barcelona",
+            "Atletico Madrid",
+            "Athletic Bilbao",
+            "Real Sociedad",
+            "Villarreal",
+            "Betis",
+            "Sevilla",
+            "Valencia",
+            "Girona"
+          ],
+          "ratings": {
+            "Real Madrid": 1830,
+            "Barcelona": 1780,
+            "Atletico Madrid": 1710,
+            "Athletic Bilbao": 1650,
+            "Real Sociedad": 1630,
+            "Villarreal": 1600,
+            "Betis": 1570,
+            "Sevilla": 1530,
+            "Valencia": 1510,
+            "Girona": 1560
+          }
+        }
+      }
+    },
+    "Italy": {
+      "leagues": {
+        "Serie A": {
+          "teams": [
+            "Inter",
+            "Juventus",
+            "AC Milan",
+            "Napoli",
+            "Roma",
+            "Lazio",
+            "Atalanta",
+            "Fiorentina",
+            "Bologna",
+            "Torino"
+          ],
+          "ratings": {
+            "Inter": 1790,
+            "Juventus": 1710,
+            "AC Milan": 1700,
+            "Napoli": 1680,
+            "Roma": 1620,
+            "Lazio": 1600,
+            "Atalanta": 1660,
+            "Fiorentina": 1560,
+            "Bologna": 1570,
+            "Torino": 1500
+          }
+        }
+      }
+    },
+    "Germany": {
+      "leagues": {
+        "Bundesliga": {
+          "teams": [
+            "Bayern Munich",
+            "Bayer Leverkusen",
+            "Borussia Dortmund",
+            "RB Leipzig",
+            "Stuttgart",
+            "Frankfurt",
+            "Wolfsburg",
+            "Freiburg",
+            "Mainz",
+            "Hoffenheim"
+          ],
+          "ratings": {
+            "Bayern Munich": 1810,
+            "Bayer Leverkusen": 1780,
+            "Borussia Dortmund": 1700,
+            "RB Leipzig": 1685,
+            "Stuttgart": 1640,
+            "Frankfurt": 1580,
+            "Wolfsburg": 1530,
+            "Freiburg": 1520,
+            "Mainz": 1500,
+            "Hoffenheim": 1490
+          }
+        }
+      }
+    },
+    "France": {
+      "leagues": {
+        "Ligue 1": {
+          "teams": [
+            "PSG",
+            "Marseille",
+            "Monaco",
+            "Lyon",
+            "Lille",
+            "Nice",
+            "Lens",
+            "Rennes",
+            "Strasbourg",
+            "Nantes"
+          ],
+          "ratings": {
+            "PSG": 1810,
+            "Marseille": 1650,
+            "Monaco": 1660,
+            "Lyon": 1600,
+            "Lille": 1620,
+            "Nice": 1580,
+            "Lens": 1560,
+            "Rennes": 1540,
+            "Strasbourg": 1480,
+            "Nantes": 1440
+          }
+        }
+      }
+    },
+    "Netherlands": {
+      "leagues": {
+        "Eredivisie": {
+          "teams": [
+            "Ajax",
+            "PSV",
+            "Feyenoord",
+            "AZ Alkmaar",
+            "Twente",
+            "Utrecht",
+            "Heerenveen",
+            "Groningen"
+          ],
+          "ratings": {
+            "PSV": 1740,
+            "Ajax": 1680,
+            "Feyenoord": 1710,
+            "AZ Alkmaar": 1620,
+            "Twente": 1580,
+            "Utrecht": 1540,
+            "Heerenveen": 1450,
+            "Groningen": 1420
+          }
+        }
+      }
+    },
+    "Portugal": {
+      "leagues": {
+        "Primeira Liga": {
+          "teams": [
+            "Benfica",
+            "Porto",
+            "Sporting CP",
+            "Braga",
+            "Vitoria SC",
+            "Boavista",
+            "Casa Pia",
+            "Estoril"
+          ],
+          "ratings": {
+            "Sporting CP": 1740,
+            "Benfica": 1730,
+            "Porto": 1710,
+            "Braga": 1600,
+            "Vitoria SC": 1540,
+            "Boavista": 1450,
+            "Casa Pia": 1430,
+            "Estoril": 1420
+          }
+        }
+      }
+    },
+    "Belgium": {
+      "leagues": {
+        "Jupiler Pro League": {
+          "teams": [
+            "Club Brugge",
+            "Anderlecht",
+            "Union SG",
+            "Genk",
+            "Gent",
+            "Antwerp",
+            "Standard Liege",
+            "Mechelen"
+          ],
+          "ratings": {
+            "Club Brugge": 1660,
+            "Anderlecht": 1600,
+            "Union SG": 1650,
+            "Genk": 1580,
+            "Gent": 1560,
+            "Antwerp": 1540,
+            "Standard Liege": 1480,
+            "Mechelen": 1440
+          }
+        }
+      }
+    },
+    "Scotland": {
+      "leagues": {
+        "Premiership": {
+          "teams": [
+            "Celtic",
+            "Rangers",
+            "Aberdeen",
+            "Hearts",
+            "Hibernian",
+            "Dundee United",
+            "Motherwell",
+            "Kilmarnock"
+          ],
+          "ratings": {
+            "Celtic": 1700,
+            "Rangers": 1660,
+            "Aberdeen": 1540,
+            "Hearts": 1510,
+            "Hibernian": 1490,
+            "Dundee United": 1440,
+            "Motherwell": 1430,
+            "Kilmarnock": 1420
+          }
+        }
+      }
+    },
+    "Greece": {
+      "leagues": {
+        "Super League 1": {
+          "teams": [
+            "Olympiacos",
+            "PAOK",
+            "AEK Athens",
+            "Panathinaikos",
+            "Aris",
+            "OFI Crete",
+            "Asteras Tripolis",
+            "Atromitos"
+          ],
+          "ratings": {
+            "Olympiacos": 1660,
+            "PAOK": 1640,
+            "AEK Athens": 1620,
+            "Panathinaikos": 1610,
+            "Aris": 1520,
+            "OFI Crete": 1440,
+            "Asteras Tripolis": 1430,
+            "Atromitos": 1410
           }
         }
       }
@@ -120,7 +386,13 @@ async function fetchOddsOrProbs(country, league, home, away){
   #hybApp .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   #hybApp select,#hybApp input,#hybApp button{background:#0d1524;border:1px solid #253653;color:#e8eef8;border-radius:10px;padding:8px}
   #hybApp .card{background:#111a2c;border:1px solid #1a2437;border-radius:12px;padding:10px;margin:10px 0}
-  #hybApp table{width:100%;border-collapse:collapse} #hybApp th,#hybApp td{border-bottom:1px solid #1a2437;padding:6px;text-align:left}
+  #hybApp table{width:100%;border-collapse:collapse;background:#101a2c;border-radius:10px;overflow:hidden}
+  #hybApp th,#hybApp td{border-bottom:1px solid #2d3d5c;padding:8px;text-align:left;color:#f2f7ff !important;background:#101a2c !important}
+  #hybApp th{color:#9fc7ff !important;background:#16233a !important;font-weight:700}
+  #hybApp td:nth-child(2){font-weight:650;color:#ffffff !important}
+  #hybApp label{color:#dce9ff !important;font-weight:600}
+  #hybApp .card{background:#111a2c !important;opacity:1 !important}
+  #hybApp .body{background:#0b1220 !important;opacity:1 !important}
   #hybApp .stack{display:grid;gap:10px}
   #hybApp .mono{font-family:ui-monospace,Consolas,Menlo,monospace}
   </style>
