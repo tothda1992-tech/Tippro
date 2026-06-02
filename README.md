@@ -1,19 +1,21 @@
-# TippPro – GitHub verzió
+# TippPro FIX23 GitHub-ready
 
-Statikus webapp, amely GitHub Pages-en és Netlify-on is működik build lépés nélkül.
+Statikus GitHub Pages kompatibilis verzió.
 
-## Fájlok
-- `index.html` – főoldal
-- `style.css` – kinézet
-- `main.js` – számítások és felület
-- `data/` – későbbi adatfájlok helye
+## Feltöltés GitHubra
+Töltsd fel ezeket a fájlokat/mappákat a repository gyökerébe:
 
-## GitHub Pages használat
-1. Hozz létre egy új GitHub repository-t.
-2. Töltsd fel a ZIP tartalmát, ne a ZIP-et magát.
-3. Settings → Pages → Deploy from branch.
-4. Branch: `main`, folder: `/root`.
-5. Save.
+- `index.html`
+- `style.css`
+- `ball.svg`
+- `data/`
+- `src/`
+- `js/`
+- `netlify.toml`
+
+GitHub Pages:
+Settings → Pages → Deploy from a branch → `main` → `/root` → Save.
 
 ## Fontos
-Ez modell-alapú segédeszköz, nem garantált tippadó rendszer. Éles használat előtt backtest és ROI ellenőrzés szükséges.
+Ez a csomag API kulcs nélkül, offline seed módban indul, ezért GitHubon biztonságosabb.
+A későbbi élő API-s verziót külön érdemes megcsinálni úgy, hogy a kulcs ne kerüljön publikus GitHub repositoryba.

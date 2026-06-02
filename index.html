@@ -1,120 +1,146 @@
-<!doctype html>
-<html lang="hu">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TippPro – GitHub verzió</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div>
-      <h1>TippPro</h1>
-      <p>Foci elemző • Poisson • fair odds • kombi • backtest</p>
+<!doctype html><html lang="hu"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>TippPro — PRO++ MAX v11_all-in-one • fix23 DEBUG-INIT (no-SW) FULL+</title>
+<link rel="stylesheet" href="./style.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+/* fix21 router: hide by default; show on :target OR when .active set by JS */
+#tab-comb, #tab-journal, #tab-sports, #tab-changelog { display:none; }
+#tab-comb:target, #tab-journal:target, #tab-sports:target, #tab-changelog:target,
+#tab-comb.active, #tab-journal.active, #tab-sports.active, #tab-changelog.active { display:block; }
+</style>
+
+
+<style>
+/* fix22: panels láthatók .active osztállyal és :target esetén is */
+#tab-comb, #tab-journal, #tab-sports, #tab-changelog { display:none; }
+#tab-comb.active, #tab-journal.active, #tab-sports.active, #tab-changelog.active { display:block; }
+#tab-comb:target, #tab-journal:target, #tab-sports:target, #tab-changelog:target { display:block; }
+</style>
+
+</head><body>
+<div id="debugBanner" style="position:sticky;top:0;padding:8px 12px;margin:0 0 8px;background:#0f172a;border-bottom:1px solid #334155;font-size:12px;color:#93c5fd">[fix23] Debug banner várja az init-et…</div>
+<div class="wrap">
+  <div class="header">
+    <div class="brand">
+      <img src="./ball.svg" width="26" height="26" alt=""/>
+      <h2 style="margin:0">TippPro — <b>PRO++ MAX</b> <span class="small">v11_all-in-one • fix23 DEBUG-INIT (no-SW) FULL+</span></h2>
     </div>
-    <button id="btnReset" class="ghost">Frissítés / cache törlés</button>
-  </header>
+    <span class="badge">GitHub-safe / offline seed</span>
+    <span class="badge">24h meta / 2h odds cache</span>
+    <span id="apiStat" class="badge">API: 0</span>
+    <span id="msg" class="badge">Kész</span>
+  </div>
 
-  <nav class="tabs">
-    <button data-tab="analysis" class="active">Elemzés</button>
-    <button data-tab="sim">Scoreline</button>
-    <button data-tab="combo">Kombi</button>
-    <button data-tab="backtest">Backtest</button>
-    <button data-tab="journal">Napló</button>
-    <button data-tab="help">Súgó</button>
-  </nav>
+  
+<div id="buildBanner" style="margin:8px 0 12px 0;padding:10px;border-radius:10px;background:#0f172a;border:1px solid #334155;color:#e2e8f0">
+  <b>BUILD:</b> v11_all-in-one • fix23 DEBUG-INIT (no-SW) FULL+</div>
 
-  <main>
-    <section id="tab-analysis" class="tab active">
-      <div class="grid two">
-        <div class="card">
-          <h2>Meccs kiválasztása</h2>
-          <label>Ország<select id="country"></select></label>
-          <label>Liga<select id="league"></select></label>
-          <label>Hazai<select id="home"></select></label>
-          <label>Vendég<select id="away"></select></label>
-          <div class="row">
-            <label>Korreláció ρ <span id="rhoVal">0.00</span><input id="rho" type="range" min="0" max="0.35" step="0.01" value="0"></label>
-          </div>
-        </div>
-        <div class="card">
-          <h2>Modell eredmény</h2>
-          <div class="kpi"><span>μ hazai</span><b id="muH">–</b></div>
-          <div class="kpi"><span>μ vendég</span><b id="muA">–</b></div>
-          <div class="kpi"><span>1 / X / 2</span><b id="p1x2">–</b></div>
-          <div class="kpi"><span>Over 2.5 / BTTS</span><b id="pGoals">–</b></div>
-          <p id="debug" class="muted"></p>
-        </div>
+<div class="tabs">
+    <a class="tab" href="#tab-comb" data-tab="comb">Kombinátor</a>
+    <a class="tab" href="#tab-journal" data-tab="journal">Napló</a>
+    <a class="tab" href="#tab-sports" data-tab="sports">Sportok</a>
+    <a class="tab" href="#tab-changelog" data-tab="changelog">Changelog</a>
+
+    <button class="tab active" data-tab="an">Elemző</button>
+    <button class="tab" data-tab="sim">Szimulátor</button>
+    <button class="tab" data-tab="help">Súgó</button>
+  </div>
+
+  <section id="tab-an" class="panel">
+    <div class="grid">
+      <div><label>Ország</label><select id="country"></select></div>
+      <div><label>Liga</label><select id="league"></select></div>
+      <div><label>Szezon</label><select id="season"><option>2024</option><option selected>2025</option><option>2026</option></select></div>
+      <div><label>Hazai</label><select id="home"></select></div>
+      <div><label>Vendég</label><select id="away"></select></div>
+    </div>
+
+    <div class="row" style="margin-top:10px">
+      <button id="btnAdd" class="tab">Hozzáadás listához</button>
+      <button id="btnAnalyze" class="primary">Összes elemzés</button>
+      <button id="btnClear" class="ghost">Lista törlése</button>
+      <button id="btnRefresh">Frissítés</button>
+      <label class="row small"><input id="useLiveMu" type="checkbox"/> Élő μ</label>
+      <label class="row small"><input id="useLiveOdds" type="checkbox" checked/> Élő odds</label>
+      <label class="row small"><input id="evOnly" type="checkbox"/> Csak EV&gt;0%</label>
+      <button id="btnSortEV" class="small">Rendezés EV↓</button>
+    </div>
+
+    <div class="legend">
+      <span class="kpill">EV% jelzés</span>
+      <span><i class="dot g"></i> erős (EV &gt; 0%)</span>
+      <span><i class="dot y"></i> közepes (−5% &lt; EV ≤ 0%)</span>
+      <span><i class="dot r"></i> gyenge (EV ≤ −5%)</span>
+      <span class="kpill">ÚJ: Szögletek & Lapok O/U</span>
+    </div>
+
+    <h3>Meccslista</h3>
+    <ul id="matchList"></ul>
+
+    <div id="resultTable"></div>
+
+    <hr class="sep"/>
+    <div class="flex">
+      <div class="card" style="flex:1 1 320px">
+        <h4 style="margin:6px 0">1X2 megoszlás</h4>
+        <canvas id="chart1x2"></canvas>
       </div>
-
-      <div class="grid two">
-        <div class="card">
-          <h2>Fair odds</h2>
-          <table><thead><tr><th>Piac</th><th>Fair odds</th></tr></thead><tbody id="fairRows"></tbody></table>
-        </div>
-        <div class="card">
-          <h2>Value kalkulátor</h2>
-          <label>Piac<select id="marketPick"></select></label>
-          <label>Bukméker odds<input id="bookOdds" type="number" min="1.01" step="0.01" value="1.85"></label>
-          <button id="calcValue">EV / Kelly számítás</button>
-          <div id="valueBox" class="result"></div>
-        </div>
+      <div class="card" style="flex:1 1 320px">
+        <h4 style="margin:6px 0">Gól-eloszlás</h4>
+        <canvas id="chartGoals"></canvas>
       </div>
-    </section>
-
-    <section id="tab-sim" class="tab">
-      <div class="card">
-        <h2>Legvalószínűbb eredmények</h2>
-        <button id="runSim">Scoreline lista</button>
-        <div id="simSummary" class="result"></div>
-        <div id="simGrid" class="scoregrid"></div>
+      <div class="card" style="flex:1 1 320px">
+        <h4 style="margin:6px 0">Összegző (radar)</h4>
+        <canvas id="chartRadar"></canvas>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="tab-combo" class="tab">
-      <div class="card">
-        <h2>Kombi generátor</h2>
-        <div class="grid three">
-          <label>Cél odds<input id="targetOdds" type="number" step="0.1" value="2.5"></label>
-          <label>Lábszám<input id="legs" type="number" min="2" max="5" value="2"></label>
-          <label>Min EV<input id="minEV" type="number" step="0.01" value="0.02"></label>
-        </div>
-        <button id="genCombo">Kombi keresése</button>
-        <div id="comboBox"></div>
+  <section id="tab-sim" class="panel" hidden>
+    <div class="grid">
+      <div><label>μ hazai</label><input id="muH" type="number" step="0.05" value="1.6"/></div>
+      <div><label>μ vendég</label><input id="muA" type="number" step="0.05" value="1.2"/></div>
+      <div><label>Futtatások</label><input id="runs" type="number" min="1000" value="30000"/></div>
+      <div><label>Bankroll</label><input id="bank" type="number" step="1" value="1000"/></div>
+      <div><label>Tét (opcionális)</label><input id="stake" type="number" step="1" value="100"/></div>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button id="btnSim" class="primary">Szimuláció</button>
+      <span class="small">Kimenet: W/D/L %, top eredmények, összgól-eloszlás, BTTS/O/U valószínűségek, Kelly</span>
+    </div>
+    <div class="flex" style="margin-top:10px">
+      <div class="card" style="flex:1 1 320px"><h4>W/D/L</h4><canvas id="chartSimWDL"></canvas></div>
+      <div class="card" style="flex:1 1 320px"><h4>Összgól-eloszlás</h4><canvas id="chartSimTotals"></canvas></div>
+      <div class="card" style="flex:1 1 320px"><h4>Top eredmények</h4><div id="topScorelines"></div></div>
+    </div>
+    <div class="panel" style="margin-top:10px">
+      <h4>EV + Kelly számoló</h4>
+      <div class="grid">
+        <div><label>Esély (p)</label><input id="kellyP" type="number" step="0.01" value="0.55"/></div>
+        <div><label>Odds (o)</label><input id="kellyO" type="number" step="0.01" value="1.90"/></div>
+        <div><label>Kelly frakció</label><input id="kellyOut" readonly/></div>
+        <div><label>Ajánlott tét</label><input id="kellyStake" readonly/></div>
       </div>
-    </section>
+      <div class="row" style="margin-top:8px"><button id="btnKelly" class="ghost">Számol</button></div>
+    </div>
+  </section>
 
-    <section id="tab-backtest" class="tab">
-      <div class="card">
-        <h2>CSV backtest</h2>
-        <p class="muted">Formátum: date,market,odds,model_p,outcome — ahol model_p 0–1 közötti, outcome 1 vagy 0.</p>
-        <textarea id="btCsv" rows="8">date,market,odds,model_p,outcome
-2026-05-01,Over 2.5,1.85,0.62,1
-2026-05-02,BTTS Yes,1.72,0.59,0
-2026-05-03,1X,1.35,0.82,1</textarea>
-        <button id="runBt">Backtest futtatás</button>
-        <div id="btSummary" class="result"></div>
-        <div id="btTable"></div>
-      </div>
-    </section>
+  <section id="tab-help" class="panel" hidden>
+    <p>• Piacok: 1X2, DC, DNB, O/U (0.5..4.5), BTTS, <b>Szögletek O/U (8.5/9.5/10.5)</b>, <b>Lapok O/U (3.5/4.5/5.5)</b>.<br/>
+       • EV színezés: <span class="dot g"></span> &gt;0%, <span class="dot y"></span> −5..0%, <span class="dot r"></span> ≤−5%.<br/>
+       • Élő μ: utolsó 10 meccs rúgott gólátlaga. Élő odds: következő/H2H/utolsó 30 találat.</p>
+  </section>
+</div>
 
-    <section id="tab-journal" class="tab">
-      <div class="card">
-        <h2>Napló</h2>
-        <button id="exportJournal">CSV export</button>
-        <table id="journal"><thead><tr><th>Dátum</th><th>Piac</th><th>Odds</th><th>P%</th><th>EV%</th><th>Stake%</th></tr></thead><tbody></tbody></table>
-      </div>
-    </section>
+<div class="spinner" id="spin"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+<div id="toast" class="toast" style="display:none"></div>
 
-    <section id="tab-help" class="tab">
-      <div class="card">
-        <h2>Használat</h2>
-        <p>Ez a verzió teljesen statikus: GitHub Pages-en és Netlify-on is működik. API-kulcs nélkül is indul, mert beépített demó adatbázist használ.</p>
-        <p>A számítás modell-alapú becslés, nem garantált tipp. Éles fogadáshoz előbb backtest és ROI ellenőrzés kell.</p>
-      </div>
-    </section>
-  </main>
+<script>window.__RAPID_KEY__ = ""; // GitHub-safe: API kulcs nélkül, offline seed módban indul</script>
+<script type="module" src="./src/main.js"></script>
+<script>console.log('BUILD: v11_all-in-one • fix23 DEBUG-INIT (no-SW) FULL+');</script>
 
-  <script src="main.js"></script>
-</body>
-</html>
+<!-- Integrated Hybrid+ fix56 -->
+<script type="module" src="js/app_integrated.js"></script>
+</body></html>
